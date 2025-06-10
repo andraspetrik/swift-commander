@@ -1,0 +1,89 @@
+import SwiftUI
+
+struct FilePane: View {
+    @Binding var path: URL
+    @State private var files: [URL] = []
+    @State private var selectedFile: URL?
+
+    var body: some View {
+        VStack {
+            HStack {
+                TextField("Path", text: Binding(
+                    get: { path.path },
+                    set: { path = URL(fileURLWithPath: $0); loadFiles() }
+                ))
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                Button("Reload") {
+                    loadFiles()
+                }
+            }
+            .padding(.horizontal)
+
+            List(selection: $selectedFile) {
+                ForEach(files, id: \.self) { file in
+                    Text(file.lastPathComponent)
+                        .tag(file)
+                }
+            }
+            .contextMenu {
+                Button("Copy") { copyFile() }
+                Button("Rename") { renameFile() }
+                Button("Delete") { deleteFile() }
+            }
+            .onAppear(perform: loadFiles)
+        }
+    }
+
+    private func loadFiles() {
+        do {
+            files = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+        } catch {
+            print("Error loading files: \(error)")
+        }
+    }
+
+    private func copyFile() {
+        guard let file = selectedFile else { return }
+        let destination = path.appendingPathComponent("Copy_of_" + file.lastPathComponent)
+        do {
+            try FileManager.default.copyItem(at: file, to: destination)
+            loadFiles()
+        } catch {
+            print("Copy failed: \(error)")
+        }
+    }
+
+    private func renameFile() {
+        guard let file = selectedFile else { return }
+        let alert = NSAlert()
+        alert.messageText = "Rename File"
+        alert.informativeText = "Enter a new name for \(file.lastPathComponent)"
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
+
+        let input = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
+        alert.accessoryView = input
+
+        let response = alert.runModal()
+        if response == .alertFirstButtonReturn, !input.stringValue.isEmpty {
+            let newURL = file.deletingLastPathComponent().appendingPathComponent(input.stringValue)
+            do {
+                try FileManager.default.moveItem(at: file, to: newURL)
+                loadFiles()
+            } catch {
+                print("Rename failed: \(error)")
+            }
+        }
+    }
+
+    private func deleteFile() {
+        guard let file = selectedFile else { return }
+        do {
+            try FileManager.default.removeItem(at: file)
+            loadFiles()
+        } catch {
+            print("Delete failed: \(error)")
+        }
+    }
+}
