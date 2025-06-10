@@ -24,6 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9F19E9EC2DF8E2D000950265 /* SwiftCommander.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = SwiftCommander.xcodeproj; sourceTree = "<group>"; };
 		9F2462832DF641F50051FCF5 /* SwiftCommander.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCommander.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2462962DF641F70051FCF5 /* SwiftCommanderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftCommanderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F2462A02DF641F70051FCF5 /* SwiftCommanderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftCommanderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,9 +73,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9F19E9ED2DF8E2D000950265 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
+			sourceTree = "<group>";
+		};
 		9F24627A2DF641F50051FCF5 = {
 			isa = PBXGroup;
 			children = (
+				9F19E9EC2DF8E2D000950265 /* SwiftCommander.xcodeproj */,
 				9F2462852DF641F50051FCF5 /* SwiftCommander */,
 				9F2462992DF641F70051FCF5 /* SwiftCommanderTests */,
 				9F2462A32DF641F70051FCF5 /* SwiftCommanderUITests */,
@@ -198,6 +205,12 @@
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9F2462842DF641F50051FCF5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 9F19E9ED2DF8E2D000950265 /* Products */;
+					ProjectRef = 9F19E9EC2DF8E2D000950265 /* SwiftCommander.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				9F2462822DF641F50051FCF5 /* SwiftCommander */,

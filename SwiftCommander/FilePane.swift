@@ -23,6 +23,12 @@ struct FilePane: View {
                 ForEach(files, id: \.self) { file in
                     Text(file.lastPathComponent)
                         .tag(file)
+                        .onTapGesture(count: 2) {
+                            openIfDirectory(file)
+                        }
+                        .onSubmit {
+                            openIfDirectory(file)
+                        }
                 }
             }
             .contextMenu {
@@ -36,11 +42,23 @@ struct FilePane: View {
 
     private func loadFiles() {
         do {
+            print("Path: \($path)")
+            
             files = try FileManager.default.contentsOfDirectory(at: path, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+            
+            files.forEach({ print("File: \($0)") })
         } catch {
             print("Error loading files: \(error)")
         }
     }
+    
+    private func openIfDirectory(_ file: URL) {
+            var isDirectory: ObjCBool = false
+            if FileManager.default.fileExists(atPath: file.path, isDirectory: &isDirectory), isDirectory.boolValue {
+                path = file
+                loadFiles()
+            }
+        }
 
     private func copyFile() {
         guard let file = selectedFile else { return }
