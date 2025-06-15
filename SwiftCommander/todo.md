@@ -1,0 +1,14 @@
+- Buttons Bar
+- Implement single selection
+- Implement multiple selection
+- Implement path bar
+- Implement copy
+- Implement move
+- Implement rename
+- Implement delete
+- move into archives
+- extract archives
+- make archives
+- Use the correct icons for the files and folders
+- Save and load window size
+- List details (size, and date)
