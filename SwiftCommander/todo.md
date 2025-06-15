@@ -10,5 +10,5 @@
 - extract archives
 - make archives
 - Use the correct icons for the files and folders
-- Save and load window size
++ Save and load window size
 - List details (size, and date)
