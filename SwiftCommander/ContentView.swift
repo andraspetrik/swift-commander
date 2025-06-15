@@ -9,8 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @State private var leftPath: URL = FileManager.default.homeDirectoryForCurrentUser
-    @State private var rightPath: URL = FileManager.default.homeDirectoryForCurrentUser
+    @State private var leftTabs: [URL] = [FileManager.default.homeDirectoryForCurrentUser]
+    @State private var rightTabs: [URL] = [FileManager.default.homeDirectoryForCurrentUser]
+    @State private var selectedLeftTab = 0
+    @State private var selectedRightTab = 0
     
 //    init() {
 //        print("leftPath: \(FileManager.default.homeDirectoryForCurrentUser)")
@@ -19,9 +21,9 @@ struct ContentView: View {
 
     var body: some View {
         HStack {
-            FilePane(path: $leftPath)
+            TabbedFilePane(tabs: $leftTabs, selectedIndex: $selectedLeftTab)
             Divider()
-            FilePane(path: $rightPath)
+            TabbedFilePane(tabs: $rightTabs, selectedIndex: $selectedRightTab)
         }
     }
 }
