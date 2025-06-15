@@ -111,11 +111,42 @@ struct FileRow: View {
     let onOpen: () -> Void
 
     var body: some View {
-        Text(file.lastPathComponent)
-            .onTapGesture(count: 2, perform: onOpen)
-            .onSubmit {
-                onOpen()
+        HStack {
+            Text(file.lastPathComponent)
+                .frame(minWidth: 200, alignment: .leading)
+            Spacer()
+            Text(fileSizeString(for: file))
+                .frame(width: 80, alignment: .trailing)
+            Text(modificationDateString(for: file))
+                .frame(width: 140, alignment: .trailing)
+        }
+        .padding(.vertical, 2)
+        .onTapGesture(count: 2, perform: onOpen)
+    }
+
+    private func fileSizeString(for url: URL) -> String {
+        do {
+            let resourceValues = try url.resourceValues(forKeys: [.fileSizeKey])
+            if let size = resourceValues.fileSize {
+                let formatter = ByteCountFormatter()
+                formatter.countStyle = .file
+                return formatter.string(fromByteCount: Int64(size))
             }
+        } catch {}
+        return "-"
+    }
+
+    private func modificationDateString(for url: URL) -> String {
+        do {
+            let resourceValues = try url.resourceValues(forKeys: [.contentModificationDateKey])
+            if let date = resourceValues.contentModificationDate {
+                let formatter = DateFormatter()
+                formatter.dateStyle = .short
+                formatter.timeStyle = .short
+                return formatter.string(from: date)
+            }
+        } catch {}
+        return "-"
     }
 }
 
