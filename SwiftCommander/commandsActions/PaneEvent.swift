@@ -6,7 +6,12 @@
 //
 import SwiftBus
 
-struct PaneEvent: EventRepresentable {
-    let targetPath: String
-    let selectedFiles: [String] = []
+class PaneEvent: EventRepresentable {
+    let currentPath: String
+    let selectedFiles: [String]
+    
+    init(currentPath: String, selectedFiles: [String]) {
+        self.currentPath = currentPath
+        self.selectedFiles = selectedFiles
+    }
 }

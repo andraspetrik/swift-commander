@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9F4C34982E3978EC005E2E4D /* SwiftBus in Frameworks */ = {isa = PBXBuildFile; productRef = 9F4C34972E3978EC005E2E4D /* SwiftBus */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		9F2462972DF641F70051FCF5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -53,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F4C34982E3978EC005E2E4D /* SwiftBus in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +90,7 @@
 				9F2462852DF641F50051FCF5 /* SwiftCommander */,
 				9F2462992DF641F70051FCF5 /* SwiftCommanderTests */,
 				9F2462A32DF641F70051FCF5 /* SwiftCommanderUITests */,
+				9F4C34962E3978EC005E2E4D /* Frameworks */,
 				9F2462842DF641F50051FCF5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,6 +103,13 @@
 				9F2462A02DF641F70051FCF5 /* SwiftCommanderUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9F4C34962E3978EC005E2E4D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -119,6 +132,7 @@
 			);
 			name = SwiftCommander;
 			packageProductDependencies = (
+				9F4C34972E3978EC005E2E4D /* SwiftBus */,
 			);
 			productName = SwiftCommander;
 			productReference = 9F2462832DF641F50051FCF5 /* SwiftCommander.app */;
@@ -202,6 +216,9 @@
 			);
 			mainGroup = 9F24627A2DF641F50051FCF5;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9F4C34952E396AEA005E2E4D /* XCRemoteSwiftPackageReference "SwiftBus" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9F2462842DF641F50051FCF5 /* Products */;
 			projectDirPath = "";
@@ -556,6 +573,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9F4C34952E396AEA005E2E4D /* XCRemoteSwiftPackageReference "SwiftBus" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mtynior/SwiftBus.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9F4C34972E3978EC005E2E4D /* SwiftBus */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9F4C34952E396AEA005E2E4D /* XCRemoteSwiftPackageReference "SwiftBus" */;
+			productName = SwiftBus;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9F24627B2DF641F50051FCF5 /* Project object */;
 }

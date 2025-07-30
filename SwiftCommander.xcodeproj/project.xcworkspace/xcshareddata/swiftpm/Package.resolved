@@ -1,0 +1,15 @@
+{
+  "originHash" : "41448fd89b9992446e376cd3bd1e02b99604b81549e5c4b381e1eb37c19d4031",
+  "pins" : [
+    {
+      "identity" : "swiftbus",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mtynior/SwiftBus.git",
+      "state" : {
+        "revision" : "d0a8129f0541195a9be1fb80e74ddd45d05ebd44",
+        "version" : "1.0.1"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -5,6 +5,6 @@
 //  Created by Petrik András on 2025. 07. 29..
 //
 
-struct DeleteEvent: EventRepresentable {
+class DeleteEvent: PaneEvent {
     
 }

@@ -5,11 +5,13 @@
 //  Created by Petrik András on 2025. 07. 29..
 //
 
-class TwoPaneEvent: Action {
-    var sourcePaneAction: PaneAction
-    var targetPaneAction: PaneAction
+import SwiftBus
+
+class TwoPaneEvent: EventRepresentable {
+    let sourcePaneAction: PaneEvent
+    let targetPaneAction: PaneEvent
     
-    init(sourcePaneAction: PaneAction, targetPaneAction: PaneAction) {
+    init(sourcePaneAction: PaneEvent, targetPaneAction: PaneEvent) {
         self.sourcePaneAction = sourcePaneAction
         self.targetPaneAction = targetPaneAction
     }
